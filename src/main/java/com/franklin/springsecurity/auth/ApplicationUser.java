@@ -1,7 +1,7 @@
 package com.franklin.springsecurity.auth;
 
 import java.util.Collection;
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,19 +15,19 @@ public class ApplicationUser implements UserDetails {
      *
      */
     private static final long serialVersionUID = 1L;
-    private final List<? extends GrantedAuthority> grantedAuthorities;
+    private final Set<? extends GrantedAuthority> grantedAuthorities;
     private final String password;
-    private final String ussername;
+    private final String username;
     private final boolean isAccountNonExpired;
     private final boolean isAccountNonLocked;
     private final boolean isCredentialsNonExpired;
     private final boolean isEnabled;
 
-    public ApplicationUser(String password, String ussername, List<? extends GrantedAuthority> grantedAuthorities,
+    public ApplicationUser(String username, String password, Set<? extends GrantedAuthority> grantedAuthorities,
             boolean isAccountNonExpired, boolean isAccountNonLocked, boolean isCredentialsNonExpired,
             boolean isEnabled) {
         this.password = password;
-        this.ussername = ussername;
+        this.username = username;
         this.grantedAuthorities = grantedAuthorities;
         this.isAccountNonExpired = isAccountNonExpired;
         this.isAccountNonLocked = isAccountNonLocked;
@@ -47,7 +47,7 @@ public class ApplicationUser implements UserDetails {
 
     @Override
     public String getUsername() {
-        return ussername;
+        return username;
     }
 
     @Override
